@@ -88,8 +88,9 @@ namespace wpCloud\StatelessMedia {
         $info = pathinfo($filename);
         $ext = empty($info['extension']) ? '' : '' . $info['extension'];
         $_parts = array();
-        $rand = substr(md5(time()), 0, 8);
-
+        // $rand = substr(md5(time()), 0, 8);
+        // Change fixing export issue from Woocommerce
+        $rand = substr(md5(date('YmdHi')), 0, 8);
         if (strpos($info['filename'], '@')) {
           $_cleanName = explode('@', $info['filename'])[0];
           $_retna = explode('@', $info['filename'])[1];
